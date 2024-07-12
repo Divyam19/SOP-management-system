@@ -1,0 +1,54 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users{
+  id              String @id @default(cuid())
+  name            String
+  email           String @unique
+  image           String 
+}
+
+model NewSop{
+  id              String @id @default(cuid())
+  oldsopid        String
+  uploaderId      String
+  uploadername    String
+  parameter       String
+  score           String
+  procedure       String
+  title           String
+  date            DateTime
+  flag            Int
+  accuracy        Int
+  completeness    Int
+  relevance       Int
+
+}
+
+model oldsop{
+  id              String @id @default(cuid())
+  newsopid        String
+  uploaderid      String
+  uploadername    String
+  parameter       String
+  score           String
+  procedure       String
+  title           String
+  date            DateTime
+  accuracy        Int
+  completeness    Int
+  relevance       Int
+}
+
+model commentbox{
+  id              String @id @default(cuid())
+  sopid           String
+  comment         String
+}

@@ -11,7 +11,7 @@ const Dashboard = () => {
         <>
             <h1>Session exists</h1>
             <p>{JSON.stringify(session)}</p>
-            <Button variant={'ghost'} onClick={()=>signOut()} className='rounded-xl bg-orange-600 hover:bg-orange-400'>Signout</Button>
+            <Button variant={'ghost'} onClick={()=>signOut()} className='rounded-xl bg-green-200 border-solid border-4 border-green-600 hover:bg-green-500'>Signout</Button>
         </>
       ) : (
         <>
