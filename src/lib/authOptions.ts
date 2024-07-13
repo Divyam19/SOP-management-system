@@ -1,6 +1,16 @@
-import { NextAuthOptions } from "next-auth";
+import { getServerSession, NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
+
+export type AuthSession = {
+  session: {
+    user: {
+      id: string;
+      name?: string;
+      email?: string;
+    };
+  } | null;
+};
 
 export const authOptions:NextAuthOptions={
     providers:[
@@ -14,3 +24,9 @@ export const authOptions:NextAuthOptions={
       }),
     ]
   }
+
+  export const getUserAuth = async () => {
+    const session = await getServerSession(authOptions);
+    return { session } as AuthSession;
+  };
+  
